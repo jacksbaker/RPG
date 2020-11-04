@@ -44,12 +44,12 @@ TagManager:
   - name: Ground
     uniqueID: 3312995547
     locked: 0
-  - name: Player
-    uniqueID: 2950503861
-    locked: 0
   - name: Walls
     uniqueID: 2922784829
     locked: 0
   - name: Deco
     uniqueID: 1900334355
+    locked: 0
+  - name: Player
+    uniqueID: 2950503861
     locked: 0
