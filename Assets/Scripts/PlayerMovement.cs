@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     private bool playerMoving;
-    private Vector2 lastMove;
+    public Vector2 lastMove;
 
     private static bool playerExists;
     // Start is called before the first frame update
