@@ -79,14 +79,16 @@ public class SlimeMovement : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "player") ;
+        if (other.gameObject.tag == "Player");
         {
-            //Destroy(other.gameObject);
+            
+            thePlayer = other.gameObject;
             other.gameObject.SetActive(false);
             reloading = true;
-            thePlayer = other.gameObject;
+           
+
 
         }
     }
