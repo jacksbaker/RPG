@@ -16,12 +16,20 @@ public class HurtEnemy : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
+        //if(false)
         {
             Destroy(other.gameObject);
         }
     }
+
+    //private function OnCollisionEnter(col : Collision)
+    //{
+    //    if (col.gameObject.tag == "WeaponOrSomething")
+    //    {
+    //        Destroy(gameObject);
+    //        Debug.Log("Wow! ITS WORKS MAN OMG!!");
 
 }
