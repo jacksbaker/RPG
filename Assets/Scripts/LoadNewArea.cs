@@ -7,6 +7,8 @@ public class LoadNewArea : MonoBehaviour
 {
     public string levelToLoad;
 
+    public string Test { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,7 @@ public class LoadNewArea : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            Application.LoadLevel(levelToLoad);
+            SceneManager.LoadScene(SceneManager.GetSceneByName("Test").buildIndex);
         }
     }
 }

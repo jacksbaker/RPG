@@ -14,7 +14,7 @@ public class PlayerStartingPoint : MonoBehaviour
     void Start()
     {
         thePlayer = FindObjectOfType<PlayerMovement>();
-        thePlayer.transform.position = new Vector3(transform.position.x, transform.position.y, thePlayer.transform.position.z);
+        thePlayer.transform.position = transform.position;
         thePlayer.lastMove = startDirection;
 
         theCamera = FindObjectOfType<CameraMovement>();
@@ -25,5 +25,6 @@ public class PlayerStartingPoint : MonoBehaviour
     void Update()
     {
         
+
     }
 }

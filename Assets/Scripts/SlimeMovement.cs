@@ -70,12 +70,13 @@ public class SlimeMovement : MonoBehaviour
             waitToReload -= Time.deltaTime;
             if (waitToReload < 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                Application.LoadLevel(Application.loadedLevel);
                 thePlayer.SetActive(true);
+                reloading = false;
+                
             }
+
         }
-
-
 
     }
 
@@ -85,10 +86,11 @@ public class SlimeMovement : MonoBehaviour
         if (other.gameObject.name == "Player")
         {
 
-            thePlayer = other.gameObject;
+            
             other.gameObject.SetActive(false);
             reloading = true;
-           
+            thePlayer = other.gameObject;
+
 
 
         }
