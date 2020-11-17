@@ -18,6 +18,11 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 lastMove;
 
     private static bool playerExists;
+
+    private bool attacking;
+    public float attackTime;
+    private float attackTimeCounter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,11 +58,19 @@ public class PlayerMovement : MonoBehaviour
             lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
         }
 
+        if(Input.GetKeyDown(KeyCode.J))
+        {
+            attackTimeCounter = attackTime;
+            attacking = true;
+            myRigidbody.velocity = Vector2.zero;
+            anim.SetBool("Attack", true); 
+        }
+
         anim.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
         anim.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
         anim.SetBool("PlayerMoving", playerMoving);
         anim.SetFloat("LastMoveX", lastMove.x);
-        anim.SetFloat("LastMoveX", lastMove.x);
+        //anim.SetFloat("LastMoveX", lastMove.x);
         anim.SetFloat("LastMoveY", lastMove.y);
     }
 

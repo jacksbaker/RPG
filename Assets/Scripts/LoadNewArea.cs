@@ -26,7 +26,7 @@ public class LoadNewArea : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            SceneManager.LoadScene(SceneManager.GetSceneByName("Test").buildIndex);
+            Application.LoadLevel(levelToLoad);
         }
     }
 }
