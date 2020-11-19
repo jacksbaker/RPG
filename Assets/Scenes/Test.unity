@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDirection: {x: 0, y: 1}
+  pointName: Test House
 --- !u!1 &416451503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1549,11 @@ PrefabInstance:
         type: 3}
       propertyPath: levelToLoad
       value: RPG
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734023952684144183, guid: 8dbf2af775e189843a34ef8f5f82a3ec,
+        type: 3}
+      propertyPath: existPoint
+      value: Exit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dbf2af775e189843a34ef8f5f82a3ec, type: 3}

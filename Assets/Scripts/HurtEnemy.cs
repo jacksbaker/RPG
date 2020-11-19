@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class HurtEnemy : MonoBehaviour
 {
+
+    public int damageToGive;
+    public GameObject damageBurst;
+    public Transform hitPoint;
+    public GameObject damageNumber;
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +27,14 @@ public class HurtEnemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
-        //if(false)
         {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<EnemyHealthManager>().HurtEnemy(damageToGive);
+            Instantiate(damageBurst, hitPoint.position, hitPoint.rotation);
+            var clone = (GameObject) Instantiate(damageNumber, hitPoint.position, Quaternion.Euler (Vector3.zero));
+
+            var test1 = clone.GetComponent<FloatingNumbers>(); 
+            test1.damageNumber = damageToGive;
+            clone.transform.position = new Vector2(hitPoint.position.x, hitPoint.position.y);
         }
     }
 
