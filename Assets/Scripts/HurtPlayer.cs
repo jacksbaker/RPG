@@ -6,12 +6,14 @@ public class HurtPlayer : MonoBehaviour
 {
 
     public int damageToGive;
+    private int currentDamage;
     public GameObject damageNumber;
 
+    private PlayerStats thePS;
     // Start is called before the first frame update
     void Start()
     {
-        
+        thePS = FindObjectOfType<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -25,13 +27,17 @@ public class HurtPlayer : MonoBehaviour
        //if (other.gameObject.tag == "Player");
         if (other.gameObject.name == "Player")
         {
+            currentDamage = damageToGive - thePS.currentDefence;
+            if(currentDamage < 0)
+            {
+                currentDamage = 0;
+            }
 
-
-            other.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageToGive);
+            other.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(currentDamage);
 
 
             var clone = (GameObject)Instantiate(damageNumber, other.transform.position, Quaternion.Euler(Vector3.zero));
-            clone.GetComponent<FloatingNumbers>().damageNumber = damageToGive;
+            clone.GetComponent<FloatingNumbers>().damageNumber = currentDamage;
         }
     
     }

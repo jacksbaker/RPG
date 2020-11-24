@@ -18,7 +18,7 @@ public class PlayerStats : MonoBehaviour
     public int currentAttack;
     public int currentDefence;
 
-
+    private PlayerHealthManager thePlayerHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,9 @@ public class PlayerStats : MonoBehaviour
         currentHP = hpLevels[1];
         currentAttack = attackLevels[1];
         currentDefence = defenceLevels[1];
+
+        thePlayerHealth = FindObjectOfType<PlayerHealthManager>();
+
     }
 
     // Update is called once per frame
@@ -47,7 +50,12 @@ public class PlayerStats : MonoBehaviour
     {
         currentLevel++;
         currentHP = hpLevels[currentLevel];
+
+        thePlayerHealth.playerMaxHealth = currentHP;
+        thePlayerHealth.playerCurrentHealth += currentHP - hpLevels[currentLevel - 1];
+
         currentAttack = attackLevels[currentLevel];
         currentDefence = defenceLevels[currentLevel];
+
     }
 }
