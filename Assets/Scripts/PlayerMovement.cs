@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetMouseButtonDown(0))
             {
                 attackTimeCounter = attackTime;
                 attacking = true;

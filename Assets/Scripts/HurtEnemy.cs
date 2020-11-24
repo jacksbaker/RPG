@@ -31,10 +31,7 @@ public class HurtEnemy : MonoBehaviour
             other.gameObject.GetComponent<EnemyHealthManager>().HurtEnemy(damageToGive);
             Instantiate(damageBurst, hitPoint.position, hitPoint.rotation);
             var clone = (GameObject) Instantiate(damageNumber, hitPoint.position, Quaternion.Euler (Vector3.zero));
-
-            var test1 = clone.GetComponent<FloatingNumbers>(); 
-            test1.damageNumber = damageToGive;
-            clone.transform.position = new Vector2(hitPoint.position.x, hitPoint.position.y);
+            clone.GetComponent<FloatingNumbers>().damageNumber = damageToGive;
         }
     }
 
