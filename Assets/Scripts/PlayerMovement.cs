@@ -27,9 +27,13 @@ public class PlayerMovement : MonoBehaviour
 
     public string startPoint;
 
+    public bool canMove;
+
     // Start is called before the first frame update
     void Start()
     {
+        canMove = true;
+
         anim = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
 
@@ -41,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Destroy(gameObject);
+
+            
         }
     }
 
@@ -48,6 +54,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         playerMoving = false;
+
+        if(!canMove)
+        {
+            myRigidbody.velocity = Vector2.zero;
+            return;
+        }
+
 
         if (!attacking)
         {
