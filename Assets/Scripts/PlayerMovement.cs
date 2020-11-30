@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool playerMoving;
     public Vector2 lastMove;
+    private Vector2 moveInput;
 
     private static bool playerExists;
 
@@ -48,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
 
             
         }
+
+        lastMove = new Vector2(0, -1f);
     }
 
     // Update is called once per frame
@@ -66,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
 
-            if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)
+            /* if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)
             {
                 //myRigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * currentMoveSpeed, myRigidbody.velocity.y);
                 myRigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * currentMoveSpeed, myRigidbody.velocity.y);
@@ -90,9 +93,20 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetAxisRaw("Vertical") < 0.5f && Input.GetAxisRaw("Vertical") > -0.5f)
             {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0f);
+            } */
+
+            moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+
+            if (moveInput != Vector2.zero)
+            {
+                myRigidbody.velocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
+                playerMoving = true;
+                lastMove = moveInput;
             }
-
-
+            else
+            {
+                myRigidbody.velocity = Vector2.zero;
+            }
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -102,15 +116,16 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetBool("Attack", true);
             }
 
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.5f && Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.5f)
+            /*if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.5f && Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.5f)
             {
                 currentMoveSpeed = moveSpeed * diagonalMoveModifier;
             }
             else
             {
                 currentMoveSpeed = moveSpeed;
-            }
-
+            } */
+            
+             
 
         }
 

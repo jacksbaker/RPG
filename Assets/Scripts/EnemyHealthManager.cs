@@ -11,6 +11,9 @@ public class EnemyHealthManager : MonoBehaviour
 
     public int expToGive;
 
+    public string enemyQuestName;
+    private QuestManager theQM;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,7 @@ public class EnemyHealthManager : MonoBehaviour
 
 
         thePlayerStats = FindObjectOfType<PlayerStats>();
+        theQM = FindObjectOfType<QuestManager>();
     }
 
     // Update is called once per frame
@@ -25,6 +29,8 @@ public class EnemyHealthManager : MonoBehaviour
     {
         if (CurrentHealth <= 0)
         {
+            theQM.enemyKilled = enemyQuestName;
+            
             Destroy(gameObject);
 
             thePlayerStats.AddExperince(expToGive);
