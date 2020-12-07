@@ -30,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
 
     public bool canMove;
 
+    private SFXManager sfxMan;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         anim = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
+        sfxMan = FindObjectOfType<SFXManager>();
 
         if (!playerExists)
         {
@@ -114,6 +118,8 @@ public class PlayerMovement : MonoBehaviour
                 attacking = true;
                 myRigidbody.velocity = Vector2.zero;
                 anim.SetBool("Attack", true);
+
+                sfxMan.playerAttack.Play();
             }
 
             /*if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.5f && Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.5f)

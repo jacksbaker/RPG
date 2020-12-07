@@ -36,6 +36,13 @@ public class CameraMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+
+        boundBox = FindObjectOfType<Bounds>().GetComponent<BoxCollider2D>();
+        minBounds = boundBox.bounds.min;
+        maxBounds = boundBox.bounds.max;
+
+
         minBounds = boundBox.bounds.min;
         maxBounds = boundBox.bounds.max;
 
