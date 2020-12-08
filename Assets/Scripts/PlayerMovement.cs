@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 float dashAmount = 1.5f;
-                myRigidbody.velocity =  (transform.position + moveDir * dashAmount);
+                myRigidbody.MovePosition(transform.position + moveDir * dashAmount);
             
             }
 
