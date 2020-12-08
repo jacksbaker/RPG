@@ -32,6 +32,11 @@ public class PlayerMovement : MonoBehaviour
 
     private SFXManager sfxMan;
 
+    public bool isDashButton;
+
+    private Vector3 moveDir;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +65,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        moveDir = new Vector3(moveInput.x, moveInput.y).normalized;
         playerMoving = false;
 
         if(!canMove)
@@ -122,6 +129,13 @@ public class PlayerMovement : MonoBehaviour
                 sfxMan.playerAttack.Play();
             }
 
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                float dashAmount = 1.5f;
+                myRigidbody.velocity =  (transform.position + moveDir * dashAmount);
+            
+            }
+
             /*if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.5f && Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.5f)
             {
                 currentMoveSpeed = moveSpeed * diagonalMoveModifier;
@@ -130,8 +144,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 currentMoveSpeed = moveSpeed;
             } */
-            
-             
+
+
 
         }
 
@@ -153,5 +167,10 @@ public class PlayerMovement : MonoBehaviour
         //anim.SetFloat("LastMoveX", lastMove.x);
         anim.SetFloat("LastMoveY", lastMove.y);
     }
+
+
+
+
+    
 
 }
