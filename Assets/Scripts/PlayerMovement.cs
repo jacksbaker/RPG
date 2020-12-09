@@ -32,11 +32,10 @@ public class PlayerMovement : MonoBehaviour
 
     private SFXManager sfxMan;
 
-    public bool isDashButton;
-
     private Vector3 moveDir;
 
-
+    public float coolDownTimer; 
+    public float dashCooldown = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         lastMove = new Vector2(0, -1f);
+     
+
     }
 
     // Update is called once per frame
@@ -128,12 +129,27 @@ public class PlayerMovement : MonoBehaviour
 
                 sfxMan.playerAttack.Play();
             }
+             
 
-            if(Input.GetKeyDown(KeyCode.E))
+            if (coolDownTimer > 0)
             {
+                coolDownTimer -= Time.deltaTime;
+            }
+            if(coolDownTimer < 0)
+            {
+                coolDownTimer = 0;
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.E) && coolDownTimer == 0)
+            {
+                Debug.Log("Sup");
                 float dashAmount = 1.5f;
                 myRigidbody.MovePosition(transform.position + moveDir * dashAmount);
-            
+                coolDownTimer = dashCooldown;
+
+               
+               
             }
 
             /*if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.5f && Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.5f)

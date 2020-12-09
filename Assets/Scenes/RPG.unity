@@ -5606,6 +5606,11 @@ PrefabInstance:
       propertyPath: canMove
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1274986661337906615, guid: d272688ed0589fd478bed84bc8a72ca2,
+        type: 3}
+      propertyPath: dashCooldown
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d272688ed0589fd478bed84bc8a72ca2, type: 3}
 --- !u!1001 &2328611130458594157
