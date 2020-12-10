@@ -56,6 +56,12 @@ TagManager:
   - name: Player
     uniqueID: 2950503861
     locked: 0
+  - name: Doorways
+    uniqueID: 4244362819
+    locked: 0
+  - name: 'Stairs '
+    uniqueID: 1600247419
+    locked: 0
   - name: 'Eneimes '
     uniqueID: 1118618961
     locked: 0
